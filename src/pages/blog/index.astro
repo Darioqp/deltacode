@@ -209,18 +209,18 @@ const getPostUrl = (postId: string) => {
     data-reveal
     class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}
   >
-    <h2 slot="heading" class="!text-4xl">Follow along</h2>
+    <h2 slot="heading" class="!text-4xl">Síguenos</h2>
     <p slot="description" class="!text-lg text-balance">
-      Stay in the loop — new articles, thoughts, and updates.
+      Mantente al día con nuestras actualizaciones.
     </p>
 
     <div class="flex flex-wrap items-center justify-center gap-3">
       <a
-        href="/rss.xml"
+        href="https://www.youtube.com/channel/UC3EGZrfvV_cGzLoobbUDl7Q"
         class="border-border bg-background text-foreground hover:border-brand-500 hover:text-brand-500 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
       >
-        <Icon name="rss" size="sm" />
-        RSS Feed
+        <Icon name="youtube" size="sm" />
+        YouTube
       </a>
       {
         socialLinks.map((link) => (

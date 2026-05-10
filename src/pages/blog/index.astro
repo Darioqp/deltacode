@@ -33,8 +33,8 @@ const featuredPosts = posts.filter((post) => post.data.featured);
 // Non-featured posts for the main listing
 const nonFeaturedPosts = posts.filter((post) => !post.data.featured);
 // If ALL posts are featured, show them all in the main listing too (to avoid empty section)
-const regularPosts = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
-
+//const regularPosts = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
+const regularPosts = posts; // Mostramos todos los posts en la sección principal, incluso los destacados
 // Collect all unique tags across all posts
 const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 
@@ -52,20 +52,21 @@ const getPostUrl = (postId: string) => {
 ---
 
 <PageLayout
-  title="Blog — Astro Rocket"
-  description="Articles on web design, development, and the web by Astro Rocket."
+  title="Recursos"
+  description="Material didáctico para revolucionar el aula de matemáticas mediante programación e IA."
   showScrollProgress
 >
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="book" size="sm" />
-      All posts
+      Material Disponible
     </Badge>
 
-    <h1 slot="title">Blog</h1>
+    <h1 slot="title">Recursos</h1>
 
     <p slot="description">
-      Articles on Astro, web performance, design systems, and building with Astro Rocket.
+      Explora material diseñado para revolucionar al aula, con propuestas que desafían las clases
+      tradicionales de matemáticas, integrando pensamiento computacional y nuevas tecnologías.
     </p>
   </Hero>
 
@@ -78,7 +79,7 @@ const getPostUrl = (postId: string) => {
       >
         <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
           <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl" data-reveal>
-            Featured
+            Recursos destacados
           </h2>
 
           <div class="grid gap-6 md:grid-cols-2" data-reveal data-reveal-delay="1">
@@ -113,7 +114,9 @@ const getPostUrl = (postId: string) => {
       <div class="flex flex-wrap items-center justify-between gap-4" data-reveal>
         {
           featuredPosts.length > 0 && nonFeaturedPosts.length > 0 && (
-            <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">All posts</h2>
+            <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
+              Todos los recursos
+            </h2>
           )
         }
 
@@ -124,14 +127,14 @@ const getPostUrl = (postId: string) => {
                 for="tag-filter"
                 class="text-foreground-muted text-sm font-medium whitespace-nowrap"
               >
-                Filter
+                Filtrar por tema:
               </label>
               <div class="relative">
                 <select
                   id="tag-filter"
                   class="tag-select border-border bg-background text-foreground focus:border-brand-500 cursor-pointer appearance-none rounded-full border py-1.5 pr-8 pl-3 text-sm font-medium transition-colors focus:outline-none"
                 >
-                  <option value="all">All posts</option>
+                  <option value="all">Todos los recursos</option>
                   {allTags.map((tag) => (
                     <option value={tag}>{tag}</option>
                   ))}
@@ -181,7 +184,7 @@ const getPostUrl = (postId: string) => {
             <div class="bg-background mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
               <Icon name="file-text" size="lg" class="text-foreground-muted" />
             </div>
-            <p class="text-foreground-muted text-lg">No posts found</p>
+            <p class="text-foreground-muted text-lg">Aún no hay recursos publicados</p>
           </div>
         ) : null
       }
@@ -192,7 +195,7 @@ const getPostUrl = (postId: string) => {
         >
           <Icon name="file-text" size="lg" class="text-foreground-muted" />
         </div>
-        <p class="text-foreground-muted text-lg">No posts found for this tag</p>
+        <p class="text-foreground-muted text-lg">No hay propuestas para este tema todavía</p>
       </div>
     </div>
   </section>
@@ -241,64 +244,64 @@ const getPostUrl = (postId: string) => {
       </a>
     </div>
   </CTA>
-</PageLayout>
 
-<style>
-  .tag-select {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
-</style>
+  <style>
+    .tag-select {
+      background-color: var(--color-background);
+      color: var(--color-foreground);
+    }
+  </style>
 
-<script>
-  function initTagFilter() {
-    const select = document.getElementById('tag-filter') as HTMLSelectElement;
-    const cards = document.querySelectorAll<HTMLElement>('.post-card');
-    const featuredSection = document.getElementById('featured-section');
-    const noResults = document.getElementById('no-results');
-    const filterCount = document.getElementById('filter-count');
+  <script>
+    function initTagFilter() {
+      const select = document.getElementById('tag-filter') as HTMLSelectElement;
+      const cards = document.querySelectorAll<HTMLElement>('.post-card');
+      const featuredSection = document.getElementById('featured-section');
+      const noResults = document.getElementById('no-results');
+      const filterCount = document.getElementById('filter-count');
 
-    if (!select) return;
+      if (!select) return;
 
-    select.addEventListener('change', () => {
-      const tag = select.value;
+      select.addEventListener('change', () => {
+        const tag = select.value;
 
-      if (tag === 'all') {
-        cards.forEach((card) => card.style.removeProperty('display'));
-        if (featuredSection) featuredSection.style.removeProperty('display');
-        noResults?.classList.add('hidden');
-        if (filterCount) filterCount.classList.add('hidden');
-        return;
-      }
+        if (tag === 'all') {
+          cards.forEach((card) => card.style.removeProperty('display'));
+          if (featuredSection) featuredSection.style.removeProperty('display');
+          noResults?.classList.add('hidden');
+          if (filterCount) filterCount.classList.add('hidden');
+          return;
+        }
 
-      let visibleCount = 0;
-      let featuredVisible = 0;
+        let visibleCount = 0;
+        let featuredVisible = 0;
 
-      cards.forEach((card) => {
-        const tags: string[] = JSON.parse(card.dataset.tags || '[]');
-        if (tags.includes(tag)) {
-          card.style.removeProperty('display');
-          visibleCount++;
-          if (featuredSection?.contains(card)) featuredVisible++;
-        } else {
-          card.style.display = 'none';
+        cards.forEach((card) => {
+          const tags: string[] = JSON.parse(card.dataset.tags || '[]');
+          if (tags.includes(tag)) {
+            card.style.removeProperty('display');
+            visibleCount++;
+            if (featuredSection?.contains(card)) featuredVisible++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (featuredSection) {
+          featuredSection.style.display = featuredVisible === 0 ? 'none' : '';
+        }
+
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+
+        if (filterCount) {
+          filterCount.textContent = `${visibleCount} recurso${visibleCount !== 1 ? 's' : ''}`;
+          filterCount.classList.remove('hidden');
         }
       });
+    }
 
-      if (featuredSection) {
-        featuredSection.style.display = featuredVisible === 0 ? 'none' : '';
-      }
-
-      if (noResults) {
-        noResults.classList.toggle('hidden', visibleCount > 0);
-      }
-
-      if (filterCount) {
-        filterCount.textContent = `${visibleCount} post${visibleCount !== 1 ? 's' : ''}`;
-        filterCount.classList.remove('hidden');
-      }
-    });
-  }
-
-  document.addEventListener('astro:page-load', initTagFilter);
-</script>
+    document.addEventListener('astro:page-load', initTagFilter);
+  </script>
+</PageLayout>

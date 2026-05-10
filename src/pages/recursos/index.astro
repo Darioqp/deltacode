@@ -45,9 +45,15 @@ const getPostUrl = (postId: string) => {
   return `/blog/${slug}`;
 };
 */
-//se elimino la carpeta 'en' dentro de la carpeta content/blog
+/*se elimino la carpeta 'en' dentro de la carpeta content/blog
 const getPostUrl = (postId: string) => {
   return `/blog/${postId}`;
+};
+*/
+
+const getPostUrl = (postId: string) => {
+  const slug = postId.split('/').pop();
+  return `/recursos/${slug}`;
 };
 ---
 

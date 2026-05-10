@@ -12,13 +12,20 @@ import { resolveSocialLinks } from '@/lib/utils';
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
 // Get all published posts
+/*
 const allPosts = await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
+});
+*/
+
+//modificacion para que no filtre los borradores en local
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true; // Eliminamos la condición de PROD para que funcione localmente
 });
 
 // Filter by English locale and sort by date
 const posts = allPosts
-  .filter((post) => post.data.locale === 'en')
+  .filter((post) => post.data.locale === 'es') //se cambio a filtrado en espanol
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
 // Separate featured posts (shown in hero section)
@@ -31,14 +38,24 @@ const regularPosts = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
 // Collect all unique tags across all posts
 const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 
+/*
 const getPostUrl = (postId: string) => {
   // Remove locale prefix from id (e.g., "en/welcome-to-velocity" -> "welcome-to-velocity")
   const slug = postId.replace('en/', '');
   return `/blog/${slug}`;
 };
+*/
+//se elimino la carpeta 'en' dentro de la carpeta content/blog
+const getPostUrl = (postId: string) => {
+  return `/blog/${postId}`;
+};
 ---
 
-<PageLayout title="Blog — Astro Rocket" description="Articles on web design, development, and the web by Astro Rocket." showScrollProgress>
+<PageLayout
+  title="Blog — Astro Rocket"
+  description="Articles on web design, development, and the web by Astro Rocket."
+  showScrollProgress
+>
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="book" size="sm" />
@@ -47,15 +64,20 @@ const getPostUrl = (postId: string) => {
 
     <h1 slot="title">Blog</h1>
 
-    <p slot="description">Articles on Astro, web performance, design systems, and building with Astro Rocket.</p>
+    <p slot="description">
+      Articles on Astro, web performance, design systems, and building with Astro Rocket.
+    </p>
   </Hero>
 
   <!-- Featured Posts Section -->
   {
     featuredPosts.length > 0 && (
-      <section id="featured-section" class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
-        <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-          <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold" data-reveal>
+      <section
+        id="featured-section"
+        class="bg-background-secondary border-border border-t py-[var(--space-section-md)]"
+      >
+        <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
+          <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl" data-reveal>
             Featured
           </h2>
 
@@ -81,39 +103,59 @@ const getPostUrl = (postId: string) => {
   }
 
   <!-- All Posts Section -->
-  <section class:list={[featuredPosts.length > 0 ? 'bg-background' : 'bg-background-secondary', 'py-[var(--space-section-md)] border-t border-border']}>
-    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+  <section
+    class:list={[
+      featuredPosts.length > 0 ? 'bg-background' : 'bg-background-secondary',
+      'border-border border-t py-[var(--space-section-md)]',
+    ]}
+  >
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
       <div class="flex flex-wrap items-center justify-between gap-4" data-reveal>
         {
           featuredPosts.length > 0 && nonFeaturedPosts.length > 0 && (
-            <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold">All posts</h2>
+            <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">All posts</h2>
           )
         }
 
-        {allTags.length > 0 && (
-          <div class="flex items-center gap-3 ml-auto">
-            <label for="tag-filter" class="text-sm font-medium text-foreground-muted whitespace-nowrap">
-              Filter
-            </label>
-            <div class="relative">
-              <select
-                id="tag-filter"
-                class="tag-select appearance-none pl-3 pr-8 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground cursor-pointer focus:outline-none focus:border-brand-500 transition-colors"
+        {
+          allTags.length > 0 && (
+            <div class="ml-auto flex items-center gap-3">
+              <label
+                for="tag-filter"
+                class="text-foreground-muted text-sm font-medium whitespace-nowrap"
               >
-                <option value="all">All posts</option>
-                {allTags.map((tag) => (
-                  <option value={tag}>{tag}</option>
-                ))}
-              </select>
-              <span class="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-foreground-muted">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m6 9 6 6 6-6"/>
-                </svg>
-              </span>
+                Filter
+              </label>
+              <div class="relative">
+                <select
+                  id="tag-filter"
+                  class="tag-select border-border bg-background text-foreground focus:border-brand-500 cursor-pointer appearance-none rounded-full border py-1.5 pr-8 pl-3 text-sm font-medium transition-colors focus:outline-none"
+                >
+                  <option value="all">All posts</option>
+                  {allTags.map((tag) => (
+                    <option value={tag}>{tag}</option>
+                  ))}
+                </select>
+                <span class="text-foreground-muted pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+              <span id="filter-count" class="text-foreground-muted hidden text-sm" />
             </div>
-            <span id="filter-count" class="text-sm text-foreground-muted hidden"></span>
-          </div>
-        )}
+          )
+        }
       </div>
 
       {
@@ -145,7 +187,9 @@ const getPostUrl = (postId: string) => {
       }
 
       <div id="no-results" class="hidden py-16 text-center">
-        <div class="bg-background mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+        <div
+          class="bg-background mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full"
+        >
           <Icon name="file-text" size="lg" class="text-foreground-muted" />
         </div>
         <p class="text-foreground-muted text-lg">No posts found for this tag</p>
@@ -154,32 +198,43 @@ const getPostUrl = (postId: string) => {
   </section>
 
   <!-- Follow CTA Section -->
-  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}>
+  <CTA
+    variant="default"
+    size="md"
+    maxWidth="lg"
+    glow={false}
+    data-reveal
+    class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}
+  >
     <h2 slot="heading" class="!text-4xl">Follow along</h2>
-    <p slot="description" class="!text-lg text-balance">Stay in the loop — new articles, thoughts, and updates.</p>
+    <p slot="description" class="!text-lg text-balance">
+      Stay in the loop — new articles, thoughts, and updates.
+    </p>
 
     <div class="flex flex-wrap items-center justify-center gap-3">
       <a
         href="/rss.xml"
-        class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+        class="border-border bg-background text-foreground hover:border-brand-500 hover:text-brand-500 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
       >
         <Icon name="rss" size="sm" />
         RSS Feed
       </a>
-      {socialLinks.map((link) => (
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
-        >
-          <Icon name={link.icon} size="sm" />
-          {link.label}
-        </a>
-      ))}
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-border bg-background text-foreground hover:border-brand-500 hover:text-brand-500 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+          >
+            <Icon name={link.icon} size="sm" />
+            {link.label}
+          </a>
+        ))
+      }
       <a
         href={`mailto:${siteConfig.email}`}
-        class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+        class="border-border bg-background text-foreground hover:border-brand-500 hover:text-brand-500 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
       >
         <Icon name="mail" size="sm" />
         Email

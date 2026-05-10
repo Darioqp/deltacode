@@ -2,6 +2,8 @@
 import ProjectLayout from '@/layouts/ProjectLayout.astro';
 import { getCollection, render } from 'astro:content';
 
+//cambios para que filtre los projectos que son borradores
+/*
 export async function getStaticPaths() {
   const allProjects = await getCollection('projects', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true;
@@ -13,6 +15,26 @@ export async function getStaticPaths() {
       project,
       related: allProjects
         .filter((p) => p.id !== project.id)
+        .slice(0, 3),
+    },
+  }));
+}
+*/
+
+export async function getStaticPaths() {
+  // 1. Filtro para que SOLO existan proyectos que NO sean borradores
+  const allProjects = await getCollection('projects', ({ data }) => {
+    return data.draft !== true; // Eliminamos la dependencia de PROD para ver cambios realistas
+  });
+
+  return allProjects.map((project) => ({
+    params: { slug: project.id.replace(/\.mdx?$/, '') },
+    props: {
+      project,
+      // 2. Filtramos los relacionados para que respeten el 'order' y no sean borradores
+      related: allProjects
+        .filter((p) => p.id !== project.id)
+        .sort((a, b) => a.data.order - b.data.order) // Ordenamos por la propiedad 'order'
         .slice(0, 3),
     },
   }));

@@ -1,14 +1,15 @@
 ---
-title: "Getting Started with Astro Rocket — From Install to Live in Minutes"
-description: "How to install, configure, and deploy Astro Rocket — covering site.config.ts, brand colours, navigation, writing posts, and deploying to Vercel."
+title: 'Getting Started with Astro Rocket — From Install to Live in Minutes'
+description: 'How to install, configure, and deploy Astro Rocket — covering site.config.ts, brand colours, navigation, writing posts, and deploying to Vercel.'
 publishedAt: 2026-03-27
-author: "Hans Martens"
-tags: ["astro-rocket", "getting-started", "configuration", "vercel"]
+author: 'Hans Martens'
+tags: ['astro-rocket', 'getting-started', 'configuration', 'vercel']
 featured: true
 locale: en
-image: "../../../assets/blog/astro-rocket-getting-started.svg"
-svgSlug: "astro-rocket-getting-started"
+image: '../../assets/blog/astro-rocket-getting-started.svg'
+svgSlug: 'astro-rocket-getting-started'
 imageAlt: "Rocket icon above the words 'get started' on a dark background"
+draft: true
 ---
 
 This guide walks you through everything needed to get Astro Rocket running locally, configured to your brand, and deployed to the web. No previous Astro experience required.
@@ -69,9 +70,9 @@ Open `src/config/nav.config.ts`. This is the only file you need to touch to chan
 
 ```ts
 export const navItems: NavItem[] = [
-  { label: 'Home',    href: '/'        },
-  { label: 'Blog',    href: '/blog'    },
-  { label: 'About',   href: '/about'   },
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 ```
@@ -84,15 +85,15 @@ Create a new `.mdx` file in `src/content/blog/en/`. Use this frontmatter templat
 
 ```mdx
 ---
-title: "Your Post Title"
-description: "A short summary under 200 characters."
+title: 'Your Post Title'
+description: 'A short summary under 200 characters.'
 publishedAt: 2026-03-15
-author: "Your Name"
-tags: ["tag-one", "tag-two"]
+author: 'Your Name'
+tags: ['tag-one', 'tag-two']
 featured: false
 locale: en
-image: "../../../assets/blog/your-image.svg"
-imageAlt: "Describe the image for screen readers."
+image: '../../../assets/blog/your-image.svg'
+imageAlt: 'Describe the image for screen readers.'
 ---
 
 Your post content starts here. Standard Markdown works — headings,

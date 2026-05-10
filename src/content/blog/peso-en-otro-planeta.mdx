@@ -1,14 +1,15 @@
 ---
-title: "Dark Mode Hero Gradient — Brand Colour at the Top, Black at the Bottom"
+title: 'Mi peso en otro planeta'
 description: "Astro Rocket's homepage hero fades from your active brand colour at the top to pure black at the bottom in dark mode. One prop on the Hero component, zero JavaScript, zero impact on light mode."
 publishedAt: 2026-03-28
-author: "Hans Martens"
-tags: ["astro-rocket", "dark-mode", "css", "design", "features"]
+author: 'Hans Martens'
+tags: ['Física', 'Python', 'Gravedad', 'Astronomia']
 featured: false
-locale: en
-image: "../../../assets/blog/dark-mode-hero-gradient.svg"
-svgSlug: "dark-mode-hero-gradient"
+locale: es
+image: '../../assets/blog/dark-mode-hero-gradient.svg'
+svgSlug: 'dark-mode-hero-gradient'
 imageAlt: "Stacked gradient bands fading from brand colour to dark above the word 'gradient' on a brand background"
+draft: false
 ---
 
 The homepage hero in Astro Rocket carries a dark mode gradient: your active brand colour at the top, fading into pure black at the bottom. Switch to light mode and nothing changes — the effect is fully scoped to `.dark`. On every other page, the hero uses its standard background with no gradient.
@@ -26,11 +27,7 @@ A single utility class in `src/styles/global.css` does the work:
 ```css
 /* Dark mode hero gradient: brand to black */
 .dark .hero-dark-gradient {
-  background: linear-gradient(
-    to bottom,
-    var(--brand-700) 0%,
-    oklch(0% 0 0) 100%
-  ) !important;
+  background: linear-gradient(to bottom, var(--brand-700) 0%, oklch(0% 0 0) 100%) !important;
 }
 ```
 
@@ -66,7 +63,7 @@ On the homepage, the Hero is called with `gradient`:
 
 ```astro
 <!-- src/pages/index.astro -->
-<Hero layout="centered" size="xl" gradient class="sticky top-0 z-0 overflow-clip">
+<Hero layout="centered" size="xl" gradient class="sticky top-0 z-0 overflow-clip" />
 ```
 
 No other page passes `gradient`, so the effect stays exclusive to the homepage.
@@ -76,13 +73,13 @@ No other page passes `gradient`, so the effect stays exclusive to the homepage.
 Any section or Hero that should carry the gradient in dark mode needs just one change. For a `<Hero>` component, add the prop:
 
 ```astro
-<Hero gradient>
+<Hero gradient />
 ```
 
 For a plain section element:
 
 ```html
-<section class="your-existing-classes hero-dark-gradient">
+<section class="your-existing-classes hero-dark-gradient"></section>
 ```
 
 In dark mode the gradient overrides the background. In light mode the class has no visual effect whatsoever — you can add it safely without touching your light-mode design.
@@ -111,10 +108,10 @@ The `variant="default"` gives the header a semi-transparent background and backd
 
 The gradient endpoints use the active theme's tokens:
 
-| Stop | Value | What it does |
-|------|-------|--------------|
-| `0%` | `var(--brand-700)` | A deep, saturated shade of your active brand colour — vivid at the very top |
-| `100%` | `oklch(0% 0 0)` | Pure black — theme-agnostic, always dark at the bottom |
+| Stop   | Value              | What it does                                                                |
+| ------ | ------------------ | --------------------------------------------------------------------------- |
+| `0%`   | `var(--brand-700)` | A deep, saturated shade of your active brand colour — vivid at the very top |
+| `100%` | `oklch(0% 0 0)`    | Pure black — theme-agnostic, always dark at the bottom                      |
 
 `--brand-700` sits two steps darker than the primary brand accent (`--brand-500`). When you switch themes in the header selector, the gradient top colour updates instantly — no rebuild, no page reload.
 

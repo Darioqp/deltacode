@@ -17,143 +17,193 @@ const location = siteConfig.address?.city
   ? `${siteConfig.address.city}${siteConfig.address.country ? `, ${siteConfig.address.country}` : ''}`
   : null;
 ---
+
 <PageLayout
-  title={`About — ${siteConfig.name}`}
-  description="Astro Rocket is a production-ready Astro 6 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on."
+  title={`Sobre mí — ${siteConfig.name}`}
+  description="Conoce a Dario Ezequiel Kupec, creador de DeltaCode. Profesor de matemática y desarrollador enfocado en la integración de tecnología y educación."
 >
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="user" size="sm" />
-      About me
+      Sobre mí
     </Badge>
     <h1 slot="title">
-      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Astro Rocket —</span><br />
+      <span class="text-foreground [-webkit-text-fill-color:currentColor]">DeltaCode —</span><br />
       <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)]">
-        <TypingEffect words={["Web Designer", "Web Developer", "Astro Developer", "Claude Code User", "UI / UX Enthusiast", "Blogger", "Coffee lover"]} />
+        <TypingEffect
+          words={[
+            'Matemática Aplicada',
+            'Gestión Educativa',
+            'Divulgación STEM',
+            'Innovación Educativa',
+            'Python para Docentes',
+          ]}
+        />
       </span>
     </h1>
 
     <p slot="description">
-      I care about both sides of the craft — how a site looks and how it
-      performs. Here's a bit more about how I think and work.
+      Matemático de formación y programador por curiosidad. <br />Mi objetivo es proporcionar
+      herramientas en Python que resuelvan problemas reales, ayudando a que veamos a la Matemática
+      de otra manera.
     </p>
   </Hero>
+
   <!-- What's possible now -->
-  <section class="py-[var(--space-section-md)] bg-brand-500/8 dark:bg-background-secondary">
+  <section class="bg-brand-500/8 dark:bg-background-secondary py-[var(--space-section-md)]">
     <div class="mx-auto max-w-6xl px-6">
       <div class="grid gap-12 lg:grid-cols-2">
         <!-- Left: text -->
         <div class="flex flex-col gap-4" data-reveal>
           <div class="flex flex-col gap-6">
-            <Badge variant="brand" pill class="self-start">The partnership</Badge>
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-              Meet the team: Astro Rocket & Claude
+            <Badge variant="brand" pill class="self-start">Flujo de Trabajo</Badge>
+            <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
+              Didáctica Matemática Creativa
             </h2>
           </div>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-           I'm a web designer and developer with 16 years of hands‑on experience. Today I work alongside Claude — not as a shortcut, but as a genuine collaborator that helps me think through design decisions, review code, and build more thoroughly than I could alone.
+          <p class="text-foreground-muted text-lg leading-relaxed">
+            Como profesor de matemática, mi objetivo es que la tecnología no sea un atajo, sino un
+            puente. Utilizo herramientas de IA para pensar nuevas formas de explicar conceptos
+            complejos y revisar el código de mis proyectos educativos.
           </p>
-          <p class="text-lg text-foreground-muted leading-relaxed">
-            This isn't about automating the work — it's about raising the standard of it. Every design decision still comes from craft and experience. Every line of code is still written with intention. Claude helps me think more rigorously, not less. The work stays mine. The thinking gets sharper.
+          <p class="text-foreground-muted text-lg leading-relaxed">
+            No se trata de automatizar el aprendizaje, sino de elevar el nivel de la enseñanza. Cada
+            problema sigue teniendo una intención pedagógica y cada script de Python está diseñado
+            con un propósito. La IA me ayuda a ser un docente más riguroso y creativo.
           </p>
         </div>
         <!-- Right: two stacked partner cards -->
-        <div class="flex flex-col gap-4 h-full" data-reveal data-reveal-delay="1">
-          <Card variant="elevated" hover class="flex-1 flex flex-col justify-center">
+        <div class="flex h-full flex-col gap-4" data-reveal data-reveal-delay="1">
+          <Card variant="elevated" hover class="flex flex-1 flex-col justify-center">
             <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+              <div
+                class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
+              >
                 <Icon name="code-2" size="md" />
               </div>
-              <div class="flex-1 min-w-0">
-                <p class="text-xs font-bold tracking-wide casesensitive text-foreground-muted mb-1">Web Designer & Developer</p>
-                <h3 class="text-base font-semibold text-foreground">Astro Rocket</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  16 years of craft — design, code, performance, and honest communication.{location ? ` Based in ${location}, working worldwide.` : ' Working worldwide.'}
+              <div class="min-w-0 flex-1">
+                <p class="casesensitive text-foreground-muted mb-1 text-xs font-bold tracking-wide">
+                  Profesor y Desarrollador
                 </p>
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                  <Badge size="sm" variant="brand">Astro</Badge>
-                  <Badge size="sm" variant="brand">Tailwind</Badge>
-                  <Badge size="sm" variant="brand">TypeScript</Badge>
+                <h3 class="text-foreground text-base font-semibold">Dario Kupec</h3>
+                <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
+                  Especialista en Educación Matemática y Gestión Educativa. Enfocado en la creación
+                  de recursos STEM prácticos y accesibles.{
+                    location
+                      ? ` Resido en ${location}, Trabajo de manera online.`
+                      : ' Trabajo de manera online.'
+                  }
+                </p>
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  <Badge size="sm" variant="brand">Matemática</Badge>
+                  <Badge size="sm" variant="brand">Python</Badge>
+                  <Badge size="sm" variant="brand">Google Colab</Badge>
                 </div>
               </div>
             </div>
           </Card>
-          <Card variant="elevated" hover href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="group flex-1 flex flex-col justify-center">
+          <Card
+            variant="elevated"
+            hover
+            rel="noopener noreferrer"
+            class="group flex flex-1 flex-col justify-center"
+          >
             <div class="flex items-start justify-between gap-4">
-              <div class="flex items-start gap-4 flex-1 min-w-0">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+              <div class="flex min-w-0 flex-1 items-start gap-4">
+                <div
+                  class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
+                >
                   <Icon name="sparkles" size="md" />
                 </div>
-                <div class="flex-1 min-w-0">
-                  <p class="text-xs font-bold tracking-wide casesensitive text-foreground-muted mb-1">AI Thinking Partner</p>
-                <h3 class="text-base font-semibold text-foreground">Claude</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  Reasoning through decisions, reviewing code and copy, exploring alternatives — a second perspective at every stage of a project.
-                </p>
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                  <Badge size="sm" variant="brand">Design review</Badge>
-                  <Badge size="sm" variant="brand">Code QA</Badge>
-                  <Badge size="sm" variant="brand">Deep thinking</Badge>
+                <div class="min-w-0 flex-1">
+                  <p
+                    class="casesensitive text-foreground-muted mb-1 text-xs font-bold tracking-wide"
+                  >
+                    IA como asistente
+                  </p>
+                  <h3 class="text-foreground text-base font-semibold">Inteligencia Artificial</h3>
+                  <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
+                    Soporte en la optimización de algoritmos, generación de casos de prueba
+                    matemáticos y refinamiento de la experiencia de usuario en entornos educativos.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <Badge size="sm" variant="brand">Pensamiento Algorítmico</Badge>
+                    <Badge size="sm" variant="brand">QA de Código</Badge>
+                    <Badge size="sm" variant="brand">Resolución de Problemas</Badge>
+                  </div>
                 </div>
               </div>
-              </div>
-              <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0" />
+              <Icon
+                name="arrow-up-right"
+                size="sm"
+                class="text-foreground-muted group-hover:text-brand-500 shrink-0 transition-colors"
+              />
             </div>
           </Card>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Values -->
-  <section class="py-[var(--space-section-md)] border-t border-border">
+  <section class="border-border border-t py-[var(--space-section-md)]">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="mb-8 text-center flex flex-col items-center gap-4" data-reveal>
+      <div class="mb-8 flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>My Process</Badge>
-          <h2 class="font-display text-4xl font-bold text-foreground">
-            How I Work
-          </h2>
+          <Badge variant="brand" pill>Metodología</Badge>
+          <h2 class="font-display text-foreground text-4xl font-bold">Cómo construyo DeltaCode</h2>
         </div>
-        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
-          These aren't aspirations — they're the constraints every project is held to, from the first conversation to the final handover.
+        <p class="text-foreground-muted mx-auto max-w-2xl text-lg text-balance">
+          Más que un sitio de recursos, es un compromiso con la claridad, la rigurosidad matemática
+          y la innovación tecnológica en el aula.
         </p>
       </div>
       <div class="grid gap-8 md:grid-cols-3" data-reveal data-reveal-delay="1">
         <Card hover>
           <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+            <div
+              class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
+            >
               <Icon name="zap" size="md" />
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">Performance First</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Fast sites rank better, convert better, and keep users happy. I optimise for speed from the ground up.
+            <div class="min-w-0 flex-1">
+              <h3 class="text-foreground text-base font-semibold">Matemática Aplicada</h3>
+              <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
+                Cada proyecto nace de un concepto matemático sólido, transformando la teoría
+                abstracta en algoritmos comprensibles y funcionales a la enseñanza.
               </p>
             </div>
           </div>
         </Card>
         <Card hover>
           <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+            <div
+              class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
+            >
               <Icon name="award" size="md" />
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">Experience That Shows</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Sixteen years of experience means I know what works, what doesn't, and exactly what your project needs.
+            <div class="min-w-0 flex-1">
+              <h3 class="text-foreground text-base font-semibold">Docencia en el Aula</h3>
+              <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
+                Mi experiencia docente me ha ayudado a desarrollar un método que permite a los
+                estudiantes redescubrir la matemática mediante la recreación en un ámbito de flujo
+                de ideas.
               </p>
             </div>
           </div>
         </Card>
         <Card hover>
           <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+            <div
+              class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
+            >
               <Icon name="rocket" size="md" />
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">Modern from the Ground Up</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Built with today's tooling. Fast, maintainable, and ready for whatever comes next.
+            <div class="min-w-0 flex-1">
+              <h3 class="text-foreground text-base font-semibold">Programación Didáctica</h3>
+              <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
+                Utilizo herramientas modernas como Python y Google Colab, para crear recursos que no
+                solo resuelven problemas, sino que invitan a los alumnos a experimentar.
               </p>
             </div>
           </div>
@@ -161,29 +211,30 @@ const location = siteConfig.address?.city
       </div>
     </div>
   </section>
+
   <!-- My Stack -->
   <TechStack
-    badge="Tools & Tech"
-    title="My Stack"
-    description="The tools I rely on every day to build fast, modern websites — chosen for performance, great developer experience, and reliability."
+    badge="Herramientas y Tecnología"
+    title="Mi Stack Tecnológico"
+    description="Las tecnologías que utilizo para unir la matemática y el código. Seleccionadas por su potencia didáctica, facilidad de aprendizaje y solidez técnica."
   />
   <!-- CTA -->
-  <section class="py-[var(--space-section-md)] bg-background">
+  <section class="bg-background py-[var(--space-section-md)]">
     <div class="mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
-        Sound like a good fit?
+      <h2 class="font-display text-foreground mb-4 text-4xl font-bold text-balance">
+        ¿Te interesa esta propuesta?
       </h2>
-      <p class="text-lg text-foreground-muted mb-8 text-balance">
-        If my background and approach match what you're looking for, I'm open to new projects. Let's have a conversation.
+      <p class="text-foreground-muted mb-8 text-lg text-balance">
+        Si eres docente, estudiante o apasionado de la tecnología y quieres conocer cómo implementar
+        estas ideas, te invito a que te comuniques conmigo para que podamos empezar a cambiar la
+        enseñanza de la matemática...
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
         <Button size="lg" href="/contact">
-          Start a Project
+          Comencemos
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href="/blog">
-          Read the Blog
-        </Button>
+        <Button size="lg" variant="outline" href="/blog"> Ver Recursos </Button>
       </div>
     </div>
   </section>

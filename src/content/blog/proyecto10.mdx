@@ -1,14 +1,15 @@
 ---
-title: "The Hero Typing Effect in Astro Rocket — How It Works and How to Tune It"
+title: 'The Hero Typing Effect in Astro Rocket — How It Works and How to Tune It'
 description: "Astro Rocket's hero headline cycles through words with a typing animation. Learn how it works, how to tune every speed and pause, and how to disable it entirely."
 publishedAt: 2026-03-16
-author: "Hans Martens"
-tags: ["astro-rocket", "components", "customization", "tutorial", "javascript"]
+author: 'Hans Martens'
+tags: ['astro-rocket', 'components', 'customization', 'tutorial', 'javascript']
 featured: false
-locale: en
-image: "../../../assets/blog/hero-typing-effect.svg"
-svgSlug: "hero-typing-effect"
+locale: es
+image: '../../assets/blog/hero-typing-effect.svg'
+svgSlug: 'hero-typing-effect'
 imageAlt: "Rocket icon above the words 'typing effect' on a dark background"
+draft: true
 ---
 
 Open the Astro Rocket About page and the headline does not sit still. It types one word, pauses, deletes it, and types the next — looping forever. This post explains exactly how that effect is built, what each value controls, and how to make it faster, slower, or gone entirely.
@@ -31,7 +32,9 @@ The component currently lives in the About page hero, inside a brand-coloured `<
 <h1 slot="title">
   <span class="text-foreground [-webkit-text-fill-color:currentColor]">Astro Rocket —</span><br />
   <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)]">
-    <TypingEffect words={["Web Designer", "Web Developer", "Astro Developer", "Blogger", "Coffee lover"]} />
+    <TypingEffect
+      words={['Web Designer', 'Web Developer', 'Astro Developer', 'Blogger', 'Coffee lover']}
+    />
   </span>
 </h1>
 ```
@@ -67,7 +70,8 @@ function startTyping() {
   // Lock the element width to the widest word so the layout never shifts
   const measurer = document.createElement('span');
   measurer.setAttribute('aria-hidden', 'true');
-  measurer.style.cssText = 'visibility:hidden;position:absolute;white-space:nowrap;pointer-events:none;';
+  measurer.style.cssText =
+    'visibility:hidden;position:absolute;white-space:nowrap;pointer-events:none;';
   const cs = getComputedStyle(root);
   measurer.style.font = cs.font;
   measurer.style.letterSpacing = cs.letterSpacing;
@@ -132,7 +136,7 @@ A naive typing effect takes about twenty lines: set an interval, increment a cha
 
 Astro's `ClientRouter` swaps pages by replacing DOM nodes without a full browser reload. A plain top-level script runs once when the browser first parses the page. When the user clicks a link and then hits back, the DOM is swapped back in but the script does not re-run — the animation stays frozen.
 
-The fix wraps the entire animation in a `startTyping()` function and registers it on `astro:page-load`, which Astro fires on both the initial load *and* every subsequent client-side navigation:
+The fix wraps the entire animation in a `startTyping()` function and registers it on `astro:page-load`, which Astro fires on both the initial load _and_ every subsequent client-side navigation:
 
 ```js
 document.addEventListener('astro:page-load', startTyping);
@@ -154,7 +158,8 @@ The fix measures every word before the animation starts, using a hidden off-scre
 
 ```js
 const measurer = document.createElement('span');
-measurer.style.cssText = 'visibility:hidden;position:absolute;white-space:nowrap;pointer-events:none;';
+measurer.style.cssText =
+  'visibility:hidden;position:absolute;white-space:nowrap;pointer-events:none;';
 measurer.style.font = getComputedStyle(root).font;
 measurer.style.letterSpacing = getComputedStyle(root).letterSpacing;
 document.body.appendChild(measurer);
@@ -188,13 +193,13 @@ The fix is simply to remove `overflow: hidden`. Width is already controlled by `
 
 ## The props and their defaults
 
-| Prop | Default | What it controls |
-|---|---|---|
-| `words` | *(required)* | Array of strings to cycle through |
-| `typeSpeed` | `120` | Milliseconds between each character typed |
-| `deleteSpeed` | `70` | Milliseconds between each character deleted |
-| `pauseAfterType` | `1800` | Pause in ms after the word is fully typed |
-| `pauseAfterDelete` | `400` | Pause in ms after the word is fully deleted |
+| Prop               | Default      | What it controls                            |
+| ------------------ | ------------ | ------------------------------------------- |
+| `words`            | _(required)_ | Array of strings to cycle through           |
+| `typeSpeed`        | `120`        | Milliseconds between each character typed   |
+| `deleteSpeed`      | `70`         | Milliseconds between each character deleted |
+| `pauseAfterType`   | `1800`       | Pause in ms after the word is fully typed   |
+| `pauseAfterDelete` | `400`        | Pause in ms after the word is fully deleted |
 
 ## How to adjust the speed
 
@@ -202,7 +207,7 @@ Pass any combination of props directly on the component. You only need to set th
 
 ```astro
 <TypingEffect
-  words={["Web Designer", "Web Developer", "Astro Developer"]}
+  words={['Web Designer', 'Web Developer', 'Astro Developer']}
   typeSpeed={80}
   deleteSpeed={40}
   pauseAfterType={2500}
@@ -214,7 +219,7 @@ Pass any combination of props directly on the component. You only need to set th
 
 ```astro
 <TypingEffect
-  words={["Designer", "Developer", "Builder"]}
+  words={['Designer', 'Developer', 'Builder']}
   typeSpeed={60}
   deleteSpeed={30}
   pauseAfterType={1200}
@@ -226,7 +231,7 @@ Pass any combination of props directly on the component. You only need to set th
 
 ```astro
 <TypingEffect
-  words={["Designer", "Developer", "Builder"]}
+  words={['Designer', 'Developer', 'Builder']}
   typeSpeed={160}
   deleteSpeed={80}
   pauseAfterType={3000}
@@ -241,11 +246,11 @@ Edit the `words` array wherever you use the component. You can have as many stri
 ```astro
 <TypingEffect
   words={[
-    "Web Designer",
-    "Web Developer",
-    "Astro Developer",
-    "UI/UX Enthusiast",
-    "Performance Nerd",
+    'Web Designer',
+    'Web Developer',
+    'Astro Developer',
+    'UI/UX Enthusiast',
+    'Performance Nerd',
   ]}
 />
 ```
@@ -272,8 +277,13 @@ It is styled with a 0.75 s `step-end` blink animation and coloured with the acti
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 ```
 
@@ -286,7 +296,11 @@ To change the blink speed, adjust the `0.75s` value. Faster blinking (`0.5s`) re
 The component wraps everything in a `<span>` with an `aria-label` set to all words joined by a comma:
 
 ```html
-<span id="typing-abc123" class="typing-effect" aria-label="Web Designer, Web Developer, Astro Developer, Blogger, Coffee lover">
+<span
+  id="typing-abc123"
+  class="typing-effect"
+  aria-label="Web Designer, Web Developer, Astro Developer, Blogger, Coffee lover"
+></span>
 ```
 
 Screen readers announce the full list of words from the `aria-label` and ignore the animated content inside (the cursor has `aria-hidden="true"`). The text is therefore both readable and not disruptive to assistive technology.
@@ -330,16 +344,16 @@ Pass an array with a single string. The component will type it once, pause, dele
 
 ## Cheat sheet
 
-| Goal | What to change |
-|---|---|
-| Faster typing | Lower `typeSpeed` (e.g. `120` → `60`) |
-| Slower typing | Raise `typeSpeed` (e.g. `120` → `180`) |
-| Faster deleting | Lower `deleteSpeed` (e.g. `70` → `35`) |
-| Longer pause after typing | Raise `pauseAfterType` (e.g. `1800` → `3000`) |
-| Shorter pause between words | Lower `pauseAfterDelete` (e.g. `400` → `150`) |
-| Different words | Edit the `words` array |
-| Different cursor character | Replace `\|` in `TypingEffect.astro` |
-| Different cursor colour | Override `--color-brand-500` in your theme |
-| Remove the effect entirely | Replace `<TypingEffect>` with a plain `<span>` |
+| Goal                        | What to change                                 |
+| --------------------------- | ---------------------------------------------- |
+| Faster typing               | Lower `typeSpeed` (e.g. `120` → `60`)          |
+| Slower typing               | Raise `typeSpeed` (e.g. `120` → `180`)         |
+| Faster deleting             | Lower `deleteSpeed` (e.g. `70` → `35`)         |
+| Longer pause after typing   | Raise `pauseAfterType` (e.g. `1800` → `3000`)  |
+| Shorter pause between words | Lower `pauseAfterDelete` (e.g. `400` → `150`)  |
+| Different words             | Edit the `words` array                         |
+| Different cursor character  | Replace `\|` in `TypingEffect.astro`           |
+| Different cursor colour     | Override `--color-brand-500` in your theme     |
+| Remove the effect entirely  | Replace `<TypingEffect>` with a plain `<span>` |
 
 Five props, one file, zero dependencies — the typing effect is deliberately simple so it stays easy to own. The three forks above are the minimum needed to make it work correctly in a real Astro project with client-side navigation, variable-length words, and a heading with descenders.

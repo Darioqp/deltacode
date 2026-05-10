@@ -1,14 +1,15 @@
 ---
-title: "Animations in Astro Rocket — Every Effect Explained"
-description: "A complete breakdown of every animation built into Astro Rocket — page transitions, scroll-triggered counters, the reactive header, card hovers, and the full micro-animation library."
+title: 'Animations in Astro Rocket — Every Effect Explained'
+description: 'A complete breakdown of every animation built into Astro Rocket — page transitions, scroll-triggered counters, the reactive header, card hovers, and the full micro-animation library.'
 publishedAt: 2026-03-23
-author: "Hans Martens"
-tags: ["astro-rocket", "animations", "components", "customization", "css"]
+author: 'Hans Martens'
+tags: ['astro-rocket', 'animations', 'components', 'customization', 'css']
 featured: false
 locale: en
-image: "../../../assets/blog/animations-in-astro-rocket.svg"
+image: '../../assets/blog/animations-in-astro-rocket.svg'
 imageAlt: "Lightning bolt icon above the word 'animations' on a dark background"
-svgSlug: "animations-in-astro-rocket"
+svgSlug: 'animations-in-astro-rocket'
+draft: true
 ---
 
 Astro Rocket ships with animations on every page. Not decorative noise — purposeful motion that makes the site feel fast, polished, and alive. This post breaks down every animation in the theme: what it does, where it lives, and how to tune or disable it.
@@ -22,7 +23,7 @@ The most noticeable animation is the one between pages. Astro Rocket uses Astro'
 Instead of a hard reload, the page content slides up and out while the new page slides up into view — a smooth, app-like transition that makes navigation feel immediate. This is enabled globally in `src/layouts/BaseLayout.astro`:
 
 ```astro
-import { ClientRouter } from 'astro:transitions';
+import {ClientRouter} from 'astro:transitions';
 
 <!-- inside <head> -->
 <ClientRouter />
@@ -79,7 +80,7 @@ The threshold is 60px. To adjust it, change the `SCROLL_THRESHOLD` constant in `
 Every interactive card in the site lifts slightly when hovered. This is a Tailwind utility applied directly in the markup:
 
 ```html
-<div class="transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+<div class="transition-all duration-200 hover:-translate-y-1 hover:shadow-md"></div>
 ```
 
 The card moves 4px upward and gains a subtle shadow over 200ms. It creates a tactile feeling that helps users understand which cards are clickable. The transition uses `duration-200` (200ms linear) — fast enough to feel immediate, slow enough to be visible.
@@ -172,13 +173,16 @@ All of these classes are available anywhere in the project — in your page cont
 For scroll-triggered reveals (elements that should only animate when they enter the viewport, not immediately on page load), you can replicate the pattern from the homepage counter — create an `IntersectionObserver` that adds the animation class when the element becomes visible:
 
 ```javascript
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    observer.unobserve(entry.target);
-    entry.target.classList.add('animate-slide-up');
-  });
-}, { threshold: 0.2 });
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      entry.target.classList.add('animate-slide-up');
+    });
+  },
+  { threshold: 0.2 }
+);
 
 document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
 ```

@@ -58,29 +58,25 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Astro Rocket',
+  name: 'DeltaCode',
   description:
-    'Astro Rocket — A production-ready Astro 6 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on.',
-  url: SITE_URL || 'https://astrorocket.dev',
+    'Explora una nueva forma de aprender matemáticas usando Python. Accede a material exclusivo y proyectos prácticos diseñados para integrar la enseñanza de la matemática con la programación.',
+  url: SITE_URL || 'https://deltacodepy.com',
   ogImage: '/og-default.svg',
-  author: 'Hans Martens',
-  email: 'hello@hansmartens.dev',
+  author: 'Dario Ezequiel Kupec',
+  email: 'darioekupec@live.com',
   address: {
     street: '',
-    city: 'Veghel',
+    city: 'Paris',
     state: '',
     zip: '',
-    country: 'the Netherlands',
+    country: 'Francia',
   },
   socialLinks: [
-    'https://github.com/hansmartens68/Astro-Rocket',
-    'https://x.com/hansmartens_dev',
-    'https://www.linkedin.com',
+    'https://github.com/Darioqp',
+    'https://www.linkedin.com/in/dariokupec',
+    'https://www.youtube.com/channel/UC3EGZrfvV_cGzLoobbUDl7Q',
   ],
-  twitter: {
-    site: 'https://x.com/hansmartens_dev',
-    creator: '@hansmartens_dev',
-  },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
     bing: BING_SITE_VERIFICATION,
@@ -89,7 +85,7 @@ const siteConfig: SiteConfig = {
   blogImageOverlay: true,
   branding: {
     logo: {
-      alt: 'Astro Rocket',
+      alt: 'DeltaCode',
       imageUrl: '/favicon.svg',
     },
     favicon: {

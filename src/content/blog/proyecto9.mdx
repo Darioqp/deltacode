@@ -1,20 +1,20 @@
 ---
-title: "Why Astro Rocket Uses sessionStorage for Dark Mode (Not localStorage)"
+title: 'Why Astro Rocket Uses sessionStorage for Dark Mode (Not localStorage)'
 description: "Dark mode is the default experience in Astro Rocket — and that's a deliberate design decision. Here's the reasoning, the code, and exactly how to change it."
 publishedAt: 2026-03-15
-author: "Hans Martens"
-tags: ["dark-mode", "astro-rocket", "design", "tutorial"]
+author: 'Hans Martens'
+tags: ['dark-mode', 'astro-rocket', 'design', 'tutorial']
 featured: false
-locale: en
-image: "../../../assets/blog/dark-mode-sessionstorage.svg"
-svgSlug: "dark-mode-sessionstorage"
-imageAlt: "Split panel showing dark mode on the left with a moon and sessionStorage badge, and light mode on the right with a sun and localStorage badge"
+locale: es
+image: '../../assets/blog/dark-mode-sessionstorage.svg'
+svgSlug: 'dark-mode-sessionstorage'
+imageAlt: 'Split panel showing dark mode on the left with a moon and sessionStorage badge, and light mode on the right with a sun and localStorage badge'
+draft: true
 ---
 
 Most dark mode implementations ask: "what did the user last choose?" Astro Rocket asks a different question: "what is the right default for this site?" The answer is dark — always — and `sessionStorage` is the technical expression of that decision.
 
 This post explains the reasoning, shows exactly how the implementation works, and gives you the precise code to change it if your own site calls for something different.
-
 
 ## The design decision
 
@@ -33,7 +33,7 @@ The implementation has three parts.
 `BaseLayout.astro` renders the `<html>` element with `class="dark"` baked in:
 
 ```html
-<html lang="en" class="scroll-smooth dark" data-theme="blue">
+<html lang="en" class="dark scroll-smooth" data-theme="blue"></html>
 ```
 
 This means the server always sends dark markup. There is no flash of an incorrect theme on load, regardless of what any script does next.
@@ -121,15 +121,15 @@ This is the right pattern for a site with a broad, unknown audience. It is more 
 
 ## Which approach is right for your site?
 
-| | sessionStorage | localStorage | OS preference |
-|---|---|---|---|
-| Dark is always the default | ✓ | only if set first | depends on system |
-| No flash on load | ✓ | ✓ | ✓ |
-| Preference survives new tab | ✗ | ✓ | n/a |
-| Preference survives next visit | ✗ | ✓ | n/a |
-| Respects OS dark/light setting | ✗ | ✗ | ✓ |
-| Best for opinionated design sites | ✓ | — | — |
-| Best for general-audience sites | — | ✓ | ✓ |
+|                                   | sessionStorage | localStorage      | OS preference     |
+| --------------------------------- | -------------- | ----------------- | ----------------- |
+| Dark is always the default        | ✓              | only if set first | depends on system |
+| No flash on load                  | ✓              | ✓                 | ✓                 |
+| Preference survives new tab       | ✗              | ✓                 | n/a               |
+| Preference survives next visit    | ✗              | ✓                 | n/a               |
+| Respects OS dark/light setting    | ✗              | ✗                 | ✓                 |
+| Best for opinionated design sites | ✓              | —                 | —                 |
+| Best for general-audience sites   | —              | ✓                 | ✓                 |
 
 Astro Rocket uses `sessionStorage` because the site has a clear visual identity and dark mode is part of it. If you are building a business site, a documentation portal, or anything serving a broad audience, `localStorage` or OS preference is the more considerate default.
 

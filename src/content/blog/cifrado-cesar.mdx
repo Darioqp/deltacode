@@ -1,14 +1,15 @@
 ---
-title: "Scroll Progress Bar — Reading Progress at a Glance"
+title: 'Metodo de cifrado Cesar'
 description: "Astro Rocket now has a scroll progress bar: a thin brand-coloured line that fills as you scroll. Here's how it works, where it lives, and how to enable it on any page."
 publishedAt: 2026-03-25
-author: "Hans Martens"
-tags: ["astro-rocket", "features", "header", "ux"]
+author: 'Hans Martens'
+tags: ['Matemática', 'Python', 'Seguridad', 'Lengua']
 featured: false
-locale: en
-image: "../../../assets/blog/scroll-progress-bar.svg"
-svgSlug: "scroll-progress-bar"
-imageAlt: "A brand-coloured horizontal progress bar, partially filled, on a brand background"
+locale: es
+image: '../../assets/blog/scroll-progress-bar.svg'
+svgSlug: 'scroll-progress-bar'
+imageAlt: 'A brand-coloured horizontal progress bar, partially filled, on a brand background'
+draft: false
 ---
 
 Astro Rocket now has a scroll progress bar. It's the thin 2px line at the top or bottom of the header that fills from left to right as you scroll down the page — a quiet signal to the reader of how far through the content they are.
@@ -37,12 +38,16 @@ function update() {
   bar.style.width = `${pct}%`;
 }
 
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    ticking = true;
-    requestAnimationFrame(update);
-  }
-}, { passive: true });
+window.addEventListener(
+  'scroll',
+  () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  },
+  { passive: true }
+);
 ```
 
 The bar colour is `var(--color-brand-500)` — it automatically matches your active colour theme and updates instantly when the visitor switches themes.
@@ -51,9 +56,9 @@ The bar colour is `var(--color-brand-500)` — it automatically matches your act
 
 The `Header` component exposes two props that control the scroll progress bar:
 
-| Prop | Type | Default | What it does |
-|------|------|:-------:|--------------|
-| `showScrollProgress` | `boolean` | `false` | Renders the progress bar |
+| Prop                     | Type                  |  Default   | What it does                                           |
+| ------------------------ | --------------------- | :--------: | ------------------------------------------------------ |
+| `showScrollProgress`     | `boolean`             |  `false`   | Renders the progress bar                               |
 | `scrollProgressPosition` | `'top'` \| `'bottom'` | `'bottom'` | Places the bar on the top or bottom edge of the header |
 
 ## Enabling it on any page
@@ -62,9 +67,7 @@ To add the scroll progress bar to a page, open the layout file that the page use
 
 ```astro
 <!-- src/pages/your-page.astro -->
-<PageLayout title="Your Page" showScrollProgress>
-  ...
-</PageLayout>
+<PageLayout title="Your Page" showScrollProgress> ... </PageLayout>
 ```
 
 To control which edge of the header the bar sits on, pass `scrollProgressPosition` directly to the `<Header>` component in the layout file:

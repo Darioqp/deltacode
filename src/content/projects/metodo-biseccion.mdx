@@ -1,40 +1,59 @@
 ---
 title: 'Método de Bisección'
-description: 'Un juego interactivo de adivinanza numérica para enseñar algoritmos de búsqueda y eficiencia. Los alumnos exploran cómo la matemática reduce el azar a través de la lógica binaria en Python.'
+description: 'Un juego interactivo para enseñar algoritmos de búsqueda, punto medio y eficiencia. Los estudiantes descubren cómo la matemática puede reducir el azar mediante pensamiento computacional y Python.'
 url: 'https://www.youtube.com/@DeltaCodePy'
 repo: 'https://colab.research.google.com/drive/1TEm8GpFwZOfdHgsi9HukEJd1zn2dJ6Cq?usp=sharing'
-tags: ['Matemática', 'Python', 'STEAM', 'Educación', 'Bisección', 'Punto Medio', 'Probabilidad']
+tags: ['Matemática', 'Python', 'STEM', 'Algoritmos', 'Bisección', 'Punto medio', 'Búsqueda binaria']
 featured: true
 order: 1
 year: 2025
 role: 'Diseño curricular'
-services: ['Formación Docente', 'Diseños Curriculares', 'Aseroramiento continuo']
+services: ['Formación docente', 'Diseño curricular', 'Asesoramiento continuo']
 draft: false
+icon: 'git-branch'
 ---
 
-## El Problema
+## El desafío
 
-Buscaba una forma de enseñar algoritmos que no pareciera aburrida o puramente teórica para mis alumnos. El objetivo era simple: pasar de una fórmula en la pizarra a un código en Python que 'piensa'. Muchas veces, la programación se enseña de forma aislada, pero en DeltaCode buscamos que sea el puente para entender conceptos matemáticos profundos de forma interactiva.
+¿Cómo podemos enseñar algoritmos sin empezar por definiciones abstractas?
 
-## Qué Construí
+Este proyecto parte de un juego simple: adivinar un número secreto entre 0 y 100. A partir de esa experiencia, los estudiantes comparan estrategias, analizan sus intentos y descubren que elegir siempre el punto medio permite reducir rápidamente el espacio de búsqueda.
 
-Desarrollé una implementación del [Método de Bisección](https://colab.research.google.com/drive/1TEm8GpFwZOfdHgsi9HukEJd1zn2dJ6Cq?usp=sharing) en Python, diseñada como un laboratorio matemático para el aula. El proyecto permite a los estudiantes visualizar cómo la lógica binaria reduce drásticamente el azar. He incluido:
+La programación aparece como una herramienta para pensar matemática, no como un tema aislado.
 
-- **Algoritmo de Bisección**: Un script de Python que resuelve el juego 'Adivina el número' con eficiencia logarítmica.
-- **Análisis de Eficiencia**: Comparativas que muestran por qué con solo 7 intentos podemos adivinar cualquier número entre 1 y 100.
-- **Integración de Valor Absoluto**: Uso de funciones matemáticas para calcular la 'distancia' al objetivo y dar pistas dinámicas.
-- **Guía Didáctica**: Material de apoyo para que otros docentes puedan replicar la experiencia en sus clases.
+## Qué construimos
 
-## Decisiones de Diseño
+Desarrollamos una actividad en Python basada en el juego “Adivina el número”, diseñada como laboratorio matemático para el aula. El proyecto permite explorar cómo una estrategia ordenada puede ser mucho más eficiente que el azar.
 
-**Enfoque STEM** : Integré Ciencia, Tecnología, Ingeniería y Matemáticas en un solo ejercicio práctico, siguiendo los estándares educativos europeos.
+Incluye:
 
-**Python como Laboratorio** : Decidí usar un lenguaje accesible para que el foco esté en la lógica y no en la sintaxis compleja.
+- **Juego interactivo en Python**: los estudiantes prueban estrategias para encontrar el número secreto.
+- **Método de bisección**: se introduce la idea de dividir el intervalo en dos partes y elegir el punto medio.
+- **Análisis de eficiencia**: se estudia por qué bastan como máximo 7 intentos para encontrar cualquier número entre 0 y 100.
+- **Valor absoluto**: se usa la distancia al número secreto para generar pistas y analizar errores.
+- **Guía docente**: orientaciones para implementar la actividad en clase y abrir discusiones matemáticas.
 
-**Visualización de Errores** : El código está diseñado para fallar de forma 'educativa', permitiendo que el alumno vea por qué una estimación es mejor que otra mediante el método científico.
+## Decisiones de diseño
 
-## Resultados
+**Del juego al algoritmo**  
+La actividad comienza con una experiencia intuitiva y luego formaliza la estrategia matemática detrás del juego.
 
-- **Impacto en el Aula**: Estudiantes que comprenden el crecimiento logarítmico sin necesidad de memorizar tablas complejas.
-- **Código Abierto**: Todo el repositorio de DeltaCode está disponible en **GitHub** y **Google Colab** bajo licencia MIT para uso educativo.
-- **Metodología Probada**: Un recurso listo para ser implementado en cualquier clase de matemáticas de nivel secundario.
+**Python como laboratorio**  
+El código está pensado para ser simple, modificable y accesible, incluso para docentes que no son programadores.
+
+**Error como parte del aprendizaje**  
+Los intentos fallidos permiten analizar estrategias, comparar resultados y mejorar el algoritmo.
+
+## Para qué sirve en el aula
+
+Este proyecto ayuda a trabajar:
+
+- pensamiento computacional,
+- intervalos y punto medio,
+- búsqueda binaria,
+- eficiencia algorítmica,
+- valor absoluto,
+- razonamiento lógico,
+- y modelización matemática con Python.
+
+Es una propuesta pensada para docentes de Matemática de nivel secundario que quieran introducir programación de manera gradual, visual y significativa.

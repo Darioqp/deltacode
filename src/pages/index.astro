@@ -43,18 +43,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </h1>
 
     <p slot="description">
-      Explorá guías, códigos y análisis didácticos para transformar tus clases de Matemática con
-      Python. Aprendé a usar programación como un laboratorio matemático para tus alumnos.
+      Explorá proyectos STEM listos para el aula y transformá tus clases de Matemática con Python y
+      pensamiento computacional.
     </p>
 
     <Fragment slot="actions">
-      <Button size="lg" href="https://www.youtube.com/@DeltaCodePy">
+      <Button size="lg" href="#work">
+        <Icon name="rocket" size="sm" />
+        Explorar Proyectos
+      </Button>
+      <Button size="lg" variant="outline" href="https://www.youtube.com/@DeltaCodePy">
         <Icon name="youtube" size="sm" />
         Ver canal de YouTube
-      </Button>
-      <Button size="lg" variant="outline" href="/contact">
-        <Icon name="rocket" size="sm" />
-        Comencemos
         <Icon name="arrow-right" size="sm" />
       </Button>
     </Fragment>
@@ -67,13 +67,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>Recursos</Badge>
+          <Badge variant="brand" pill>Nuestra Propuesta</Badge>
           <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
-            Lo que ofrecemos
+            Matemática y pensamiento computacional
           </h2>
         </div>
         <p class="text-foreground-muted mx-auto max-w-2xl text-lg">
-          Propuestas innovadoras para el aula moderna.
+          Materiales, proyectos y guías para explorar Matemática con Python mediante experiencias
+          STEM interactivas.
         </p>
       </div>
 
@@ -89,8 +90,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="min-w-0 flex-1">
               <h3 class="text-foreground text-base font-semibold">Pensamiento Computacional</h3>
               <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
-                Introducción a Python no solo como código, sino como una herramienta lógica para
-                resolver problemas reales en el aula.
+                Actividades para desarrollar lógica, algoritmos y resolución de problemas usando
+                Python como herramienta de exploración.
               </p>
             </div>
           </div>
@@ -107,8 +108,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="min-w-0 flex-1">
               <h3 class="text-foreground text-base font-semibold">Matemática Aplicada</h3>
               <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
-                Análisis de algoritmos para transformar conceptos abstractos en experiencias
-                interactivas.
+                Proyectos que conectan contenidos matemáticos con simulaciones, visualizaciones y
+                situaciones concretas.
               </p>
             </div>
           </div>
@@ -125,8 +126,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="min-w-0 flex-1">
               <h3 class="text-foreground text-base font-semibold">Análisis Didáctico</h3>
               <p class="text-foreground-muted mt-1.5 text-sm leading-relaxed">
-                Guías diseñadas para docentes, enfocadas en cómo llevar estos proyectos al currículo
-                escolar de forma efectiva.
+                Material de apoyo docente con objetivos pedagógicos, secuencias de trabajo y
+                sugerencias de implementación.
               </p>
             </div>
           </div>
@@ -148,12 +149,12 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             </h2>
           </div>
           <p class="text-foreground-muted mb-4 text-lg leading-relaxed">
-            Dieciséis años de experiencia{
-              siteConfig.address?.city ? `, resido en ${siteConfig.address.city}.` : ''
-            } Soy un apasionado por la tecnología y la enseñanza. Creo firmemente que la programación
-            es la clave para que los estudiantes puedan explorar la matemática de una manera tangible
-            y profunda. A través de DeltaCode, comparto herramientas para que otros docentes transformen
-            sus clases usando Python como un laboratorio de ideas.
+            Soy profesor de Matemática, egresado de FaMAF (UNC), y hace más de 16 años trabajo en
+            educación secundaria. DeltaCode nace de una idea simple: usar programación y pensamiento
+            computacional para transformar conceptos abstractos en experiencias matemáticas más
+            visuales, exploratorias e interactivas. A través de proyectos STEM con Python, comparto
+            recursos y materiales pensados para docentes que buscan llevar nuevas herramientas al
+            aula.
           </p>
 
           <Button variant="outline" href="/about" class="self-start"> Más sobre mí </Button>
@@ -171,7 +172,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
               class="bg-background-tertiary border-brand-500/40 hover:border-brand-500 flex h-full cursor-default flex-col items-center justify-center gap-2 rounded-xl border-t-2 p-5 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
               <Icon name="history" class="text-brand-500 h-10 w-10" />
-              <p class="text-foreground text-sm font-semibold">16 años de experiencia</p>
+              <p class="text-foreground text-sm font-semibold">+16 años de experiencia</p>
             </div>
             <a
               href="https://www.youtube.com/@DeltaCodePy"
@@ -185,18 +186,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             <div
               class="bg-background-tertiary border-brand-500/40 hover:border-brand-500 flex h-full cursor-default flex-col items-center justify-center gap-2 rounded-xl border-t-2 p-5 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
-              <Icon name="globe" class="text-brand-500 h-10 w-10" />
-              <p class="text-foreground text-sm font-semibold">Metodologías STEM</p>
+              <Icon name="blocks" class="text-brand-500 h-10 w-10" />
+              <p class="text-foreground text-sm font-semibold">Proyectos STEM</p>
             </div>
             <div
               class="bg-background-tertiary border-brand-500/40 hover:border-brand-500 flex h-full cursor-default flex-col items-center justify-center gap-2 rounded-xl border-t-2 p-5 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
-              <Icon name="map-pin" class="text-brand-500 h-10 w-10" />
-              <p class="text-foreground text-sm font-semibold">
-                Resido en <br class="sm:hidden" />{siteConfig.address?.city ?? 'Your City'}{
-                  siteConfig.address?.country ? `, ${siteConfig.address.country}` : ''
-                }
-              </p>
+              <Icon name="graduation-cap" class="text-brand-500 h-10 w-10" />
+              <p class="text-foreground text-sm font-semibold">FAMAF - UNC (Argentina)</p>
             </div>
           </div>
         </Card>
@@ -212,13 +209,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>Mejores Proyectos</Badge>
+          <Badge variant="brand" pill>Proyectos Destacados</Badge>
           <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
-            Ideas para llevar al aula
+            Proyectos STEM para el aula
           </h2>
         </div>
         <p class="text-foreground-muted mx-auto max-w-2xl text-lg">
-          Una selección de los mejores proyectos.
+          Actividades listas para explorar Matemática con Python en tu salón de clases, con guías y
+          materiales de apoyo para docentes.
         </p>
       </div>
 
@@ -235,7 +233,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
               <div class="flex flex-1 flex-col">
                 <div class="mb-3 flex items-start justify-between gap-4">
                   <div class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br">
-                    <Icon name="layers" size="sm" />
+                    <Icon name={project.data.icon ?? 'layers'} size="sm" />
                   </div>
                   <Icon
                     name="arrow-up-right"

@@ -81,6 +81,7 @@ const projects = defineCollection({
       client: z.string().optional(),
       role: z.string().optional(),
       services: z.array(z.string()).default([]),
+      icon: z.string().optional(),
       draft: z.boolean().default(false),
     }),
 });

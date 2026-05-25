@@ -166,7 +166,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           data-reveal
           data-reveal-delay="1"
         >
-          <p class="text-foreground mb-5 text-center text-sm">Algo sobre mí.</p>
+          <p class="text-foreground mb-5 text-center text-sm">Experiencia y enfoque.</p>
           <div class="grid flex-1 auto-rows-fr grid-cols-2 gap-3">
             <div
               class="bg-background-tertiary border-brand-500/40 hover:border-brand-500 flex h-full cursor-default flex-col items-center justify-center gap-2 rounded-xl border-t-2 p-5 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
@@ -265,6 +265,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
+  {
+    /*Por el momento, se suprimen los testimonios, pero se deja el código para futuras
+  implementaciones. Se podrían agregar más testimonios o convertir esta sección en un carrusel para
+  mostrar más feedback de docentes.*/
+  }
+
+  {
+    /*
   <!-- Testimonials -->
   <section class="bg-background border-border relative z-10 border-t py-[var(--space-section-md)]">
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
@@ -343,6 +351,69 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
                 <p class="text-foreground-muted text-xs">Coordinadora STEM (España)</p>
               </div>
             </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+*/
+  }
+
+  <!-- Filosofia -->
+  <section class="bg-background border-border relative z-10 border-t py-[var(--space-section-md)]">
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>Nuestra visión</Badge>
+
+          <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
+            Matemática para explorar y crear, no solo para memorizar
+          </h2>
+        </div>
+
+        <p class="text-foreground-muted mx-auto max-w-3xl text-lg leading-relaxed">
+          DeltaCode nace de una idea simple: transformar la programación en una herramienta para
+          pensar y hacer matemática. A través de proyectos STEM con Python, buscamos que los
+          estudiantes experimenten, formulen hipótesis, analicen errores y descubran conceptos
+          matemáticos mediante exploración y pensamiento computacional.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2" data-reveal data-reveal-delay="1">
+        <!-- Card 1 -->
+        <Card variant="elevated" padding="lg" hover>
+          <div class="flex h-full flex-col gap-4">
+            <div
+              class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br"
+            >
+              <Icon name="lightbulb" size="md" />
+            </div>
+
+            <h3 class="font-display text-foreground text-xl font-bold">Aprender haciendo</h3>
+
+            <p class="text-foreground-muted leading-relaxed">
+              Los estudiantes construyen estrategias, modifican código y analizan resultados para
+              comprender conceptos matemáticos desde la práctica.
+            </p>
+          </div>
+        </Card>
+
+        <!-- Card 2 -->
+        <Card variant="elevated" padding="lg" hover>
+          <div class="flex h-full flex-col gap-4">
+            <div
+              class="from-brand-500/20 to-brand-500/5 text-brand-500 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br"
+            >
+              <Icon name="flask-conical" size="md" />
+            </div>
+
+            <h3 class="font-display text-foreground text-xl font-bold">Python como laboratorio</h3>
+
+            <p class="text-foreground-muted leading-relaxed">
+              La programación se utiliza como herramienta de exploración para visualizar ideas,
+              experimentar con modelos y desarrollar pensamiento computacional.
+            </p>
           </div>
         </Card>
       </div>

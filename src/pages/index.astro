@@ -150,11 +150,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           </div>
           <p class="text-foreground-muted mb-4 text-lg leading-relaxed">
             Soy profesor de Matemática, egresado de FaMAF (UNC), y hace más de 16 años trabajo en
-            educación secundaria. DeltaCode nace de una idea simple: usar programación y pensamiento
-            computacional para transformar conceptos abstractos en experiencias matemáticas más
-            visuales, exploratorias e interactivas. A través de proyectos STEM con Python, comparto
-            recursos y materiales pensados para docentes que buscan llevar nuevas herramientas al
-            aula.
+            educación secundaria. <br />DeltaCode nace de una idea simple: usar programación y
+            pensamiento computacional para transformar conceptos abstractos en experiencias
+            matemáticas más visuales, exploratorias e interactivas. <br />A través de proyectos STEM
+            con Python, comparto recursos y materiales pensados para docentes que buscan llevar
+            nuevas herramientas al aula.
           </p>
 
           <Button variant="outline" href="/about" class="self-start"> Más sobre mí </Button>
@@ -427,7 +427,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6">
       <div class="flex items-end justify-between" data-reveal>
         <div class="flex flex-col gap-6">
-          <Badge variant="brand" pill class="self-start">Explorar</Badge>
+          <Badge variant="brand" pill class="self-start">Recursos docentes</Badge>
           <h2 class="font-display text-foreground text-3xl font-bold md:text-4xl">
             Recursos para el aula
           </h2>
@@ -436,7 +436,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           href="/blog"
           class="text-brand-500 hover:text-brand-600 hidden shrink-0 items-center gap-1.5 text-sm font-medium transition-colors sm:inline-flex"
         >
-          Ver todas las publicaciones
+          Ver todos los recursos
           <Icon name="arrow-right" size="sm" />
         </a>
       </div>
@@ -477,8 +477,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         STEM?
       </h2>
       <p class="text-foreground-muted mb-10 text-lg leading-relaxed text-balance md:text-xl">
-        En <strong>DeltaCode</strong> diseñamos proyectos integrales de matemática y programación listos
-        para ser implementados en tu salón. Nosotros preparamos la lógica, vos inspirás a tus alumnos.
+        En <strong>DeltaCode</strong> diseñamos proyectos de Matemática con Python para que puedas llevar
+        pensamiento computacional, exploración y creatividad a tus clases. Encontrá actividades, guías
+        y materiales listos para trabajar en el aula.
       </p>
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <Button
@@ -492,10 +493,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <Button
           size="lg"
           variant="outline"
-          href="/about"
+          href="/recursos"
           class="hover:bg-background-secondary w-full transition-colors sm:w-auto"
         >
-          Sobre mí
+          Explorar Recursos
         </Button>
       </div>
     </div>

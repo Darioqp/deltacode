@@ -201,7 +201,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
-  <!-- Portfolio -->
+  <!-- Proyectos -->
   <section
     id="work"
     class="bg-background-secondary border-border relative z-10 border-t py-[var(--space-section-md)]"
@@ -261,6 +261,16 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
             </Card>
           ))
         }
+      </div>
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Button
+          size="lg"
+          href="/projects"
+          class="shadow-brand-500/20 w-full shadow-lg transition-transform hover:scale-105 sm:w-auto"
+        >
+          Ver todos los proyectos
+          <Icon name="arrow-right" size="sm" class="ml-2" />
+        </Button>
       </div>
     </div>
   </section>
@@ -433,7 +443,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           </h2>
         </div>
         <a
-          href="/blog"
+          href="/recursos"
           class="text-brand-500 hover:text-brand-600 hidden shrink-0 items-center gap-1.5 text-sm font-medium transition-colors sm:inline-flex"
         >
           Ver todos los recursos
